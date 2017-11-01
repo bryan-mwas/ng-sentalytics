@@ -1,0 +1,48 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="card">
+      <div class="card-header text-white bg-primary mb-3" style="padding: 10px;">
+        <div class="float-left form-inline">
+          <label for="period_begin" style="font-weight: bold; padding-top: 9px;">
+            Tweets
+          </label>
+        </div>
+        <div class="float-right form-inline">
+          <label for="period_begin" style="font-weight: bold;">
+            Filter Period: &ensp;
+          </label>
+          <select #period name="period_begin" class="form-control" [(ngModel)]="all" (change)="filterPeriod(tweets, period.value)">
+            <option value="all">All</option>
+            <option *ngFor="let date of filtered_period" value="{{date}}">{{date}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="card-body">
+        <table class="table table-bordered table-sm">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Location</th>
+              <th>Text</th>
+              <th>Created date</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor='let tweet of tweets | paginate: { itemsPerPage: 10, currentPage: p }'>
+              <td>{{tweet.tweet_id}}</td>
+              <td>{{tweet.location}}</td>
+              <td>{{tweet.text}}</td>
+              <td>{{tweet.created_date | date: 'yMd'}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card-footer">
+        <button class="btn btn-primary btn-sm" (click)="triggerAnalysis()">Analyze</button>
+        <div class="float-right">
+          <pagination-controls (pageChange)="p = $event"></pagination-controls>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

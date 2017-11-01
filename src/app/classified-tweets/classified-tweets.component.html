@@ -1,0 +1,32 @@
+<div class="animated fadeIn">
+  <div class="row" *ngFor="let polarity of polarity_list; let i = index;">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-header">
+          <i class="fa fa-align-justify"></i> {{polarity.name}}
+        </div>
+        <div class="card-body">
+          <table class="table table-bordered table-striped table-sm">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Location</th>
+                <th>Text</th>
+                <th>Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor='let tweet of polarity.tweets | paginate: {id: polarity.name, itemsPerPage: 10, currentPage: p[i] }'>
+                <td>{{tweet.tweet_id}}</td>
+                <td>{{tweet.location}}</td>
+                <td>{{tweet.text}}</td>
+                <td>{{tweet.created_date | date: 'yMd'}}</td>
+              </tr>
+            </tbody>
+          </table>
+          <pagination-controls id={{polarity.name}} (pageChange)="p[i] = $event"></pagination-controls>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
