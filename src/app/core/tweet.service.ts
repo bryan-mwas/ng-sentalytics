@@ -27,4 +27,10 @@ export class TweetService {
   getPolarityTweets(): Observable<any[]> {
     return this._http.get<any[]>(this._sentUrl + 'polarity/');
   }
+
+  getTweetThemes(body) {
+    let headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
+    let options = new RequestOptions({ headers: headers }); // Create a request option
+    return this.http.post(this._sentUrl + 'topics/', JSON.stringify(body), options);
+  }
 }

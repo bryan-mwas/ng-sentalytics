@@ -1,20 +1,22 @@
 <div class="animated fadeIn">
   <div class="row">
     <div class="card">
-      <div class="card-header text-white bg-primary mb-3" style="padding: 10px;">
+      <div class="card-header" style="padding: 10px;">
         <div class="float-left form-inline">
           <label for="period_begin" style="font-weight: bold; padding-top: 9px;">
-            Tweets
+            <i class="fa fa-align-justify"></i> &nbsp;Tweets
           </label>
         </div>
         <div class="float-right form-inline">
           <label for="period_begin" style="font-weight: bold;">
             Filter Period: &ensp;
           </label>
-          <select #period name="period_begin" class="form-control" [(ngModel)]="all" (change)="filterPeriod(tweets, period.value)">
+          <select #period name="period_begin" class="form-control form-control-sm" [(ngModel)]="all" (change)="filterPeriod(tweets, period.value)">
             <option value="all">All</option>
             <option *ngFor="let date of filtered_period" value="{{date}}">{{date}}</option>
           </select>
+          &nbsp;&nbsp;&nbsp;
+          <button class="btn btn-warning btn-sm" (click)="triggerAnalysis()">Analyze</button>
         </div>
       </div>
       <div class="card-body">
@@ -38,7 +40,6 @@
         </table>
       </div>
       <div class="card-footer">
-        <button class="btn btn-primary btn-sm" (click)="triggerAnalysis()">Analyze</button>
         <div class="float-right">
           <pagination-controls (pageChange)="p = $event"></pagination-controls>
         </div>

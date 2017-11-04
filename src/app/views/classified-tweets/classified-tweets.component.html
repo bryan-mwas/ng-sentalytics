@@ -1,0 +1,62 @@
+<div class="animated fadeIn">
+  <div class="row" *ngFor="let polarity of polarity_list; let i = index;">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-header">
+          <i class="fa fa-align-justify"></i>
+          <span style="font-size: 16px; font-weight: bold;">{{polarity.name}} tweets</span>
+          <button class="btn btn-primary btn-sm float-right" (click)="extractTopic(polarity.tweets, i)">Get Theme</button>
+        </div>
+        <div class="card-body">
+          <table class="table table-bordered table-striped table-sm">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Location</th>
+                <th>Text</th>
+                <th>Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor='let tweet of polarity.tweets | paginate: {id: polarity.name, itemsPerPage: 5, currentPage: p[i] }'>
+                <td>{{tweet.tweet_id}}</td>
+                <td>{{tweet.location}}</td>
+                <td>{{tweet.text}}</td>
+                <td>{{tweet.created_date | date: 'yMd'}}</td>
+              </tr>
+            </tbody>
+          </table>
+          <pagination-controls id={{polarity.name}} (pageChange)="p[i] = $event"></pagination-controls>
+        </div>
+      </div>
+    </div>
+    <!-- id: Distinguish div from other dynamically generated files -->
+    <div id="{{i}}" class="col-lg-12">
+      <div class="card" *ngIf="tweet_themes && selected_theme == i">
+        <div class="card-header">
+          <span style="font-size: 16px; font-weight: bold;">Major {{polarity.name}} topics</span>
+        </div>
+        <div class="card-body">
+          <div class="card">
+            <h2 class="mx-auto">Non-Negative Matrix Factorization</h2>
+            <ul class="list-group list-group-flush" *ngFor="let nmf of tweet_themes.nmf">
+              <li class="list-group-item">
+                <h3>{{nmf.major_topic}}</h3>
+              </li>
+              <li class="list-group-item" *ngFor="let document of nmf.documents">{{document}}</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h2 class="mx-auto">Latent Dirichlet Allocation</h2>
+            <ul class="list-group list-group-flush" *ngFor="let lda of tweet_themes.lda">
+              <li class="list-group-item">
+                <h3>{{lda.major_topic}}</h3>
+              </li>
+              <li class="list-group-item" *ngFor="let document of lda.documents">{{document}}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

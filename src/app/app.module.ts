@@ -67,11 +67,12 @@ import { AppRoutingModule } from './app.routing';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
-import { ClassifiedTweetsComponent } from './classified-tweets/classified-tweets.component';
-import { ListTweetsComponent } from './list-tweets/list-tweets.component';
+import { ClassifiedTweetsComponent } from './views/classified-tweets/classified-tweets.component';
+import { ListTweetsComponent } from './views/list-tweets/list-tweets.component';
 import { DateFilterPipe } from './shared/date-filter.pipe';
 import { TweetService } from './core/tweet.service';
 import { PagerService } from './core/pager.service';
+import { TweetThemesComponent } from './views/tweet-themes/tweet-themes.component';
 
 @NgModule({
   imports: [
@@ -93,7 +94,8 @@ import { PagerService } from './core/pager.service';
     ...APP_DIRECTIVES,
     ClassifiedTweetsComponent,
     ListTweetsComponent,
-    DateFilterPipe
+    DateFilterPipe,
+    TweetThemesComponent
   ],
   providers: [{
     provide: LocationStrategy,

@@ -15,5 +15,9 @@ export const navigation = [
   {
     name: 'Classified Tweets',
     url: '/classified'
+  },
+  {
+    name: 'Tweet Themes',
+    url: '/topics'
   }
 ];

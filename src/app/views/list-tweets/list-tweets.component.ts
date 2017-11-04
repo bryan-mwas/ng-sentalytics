@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { Tweet } from '../models/tweet';
-import { TweetService } from '../core/tweet.service';
+import { Tweet } from '../../models/tweet';
+import { TweetService } from '../../core/tweet.service';
 import 'rxjs/add/operator/map';
 
 @Component({
