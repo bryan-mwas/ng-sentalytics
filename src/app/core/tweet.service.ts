@@ -33,4 +33,8 @@ export class TweetService {
     let options = new RequestOptions({ headers: headers }); // Create a request option
     return this.http.post(this._sentUrl + 'topics/', JSON.stringify(body), options);
   }
+
+  getTweetSummary() {
+    return this._http.get<any[]>(this._sentUrl + 'summary/');
+  }
 }

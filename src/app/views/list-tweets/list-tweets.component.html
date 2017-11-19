@@ -30,7 +30,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor='let tweet of tweets | paginate: { itemsPerPage: 10, currentPage: p }'>
+            <tr *ngFor='let tweet of filtered_tweets | paginate: { itemsPerPage: 10, currentPage: p }'>
               <td>{{tweet.tweet_id}}</td>
               <td>{{tweet.location}}</td>
               <td>{{tweet.text}}</td>

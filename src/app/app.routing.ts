@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { ClassifiedTweetsComponent } from './views/classified-tweets/classified-tweets.component';
 import { ListTweetsComponent } from './views/list-tweets/list-tweets.component';
 import { TweetThemesComponent } from './views/tweet-themes/tweet-themes.component';
+import { DashboardComponent } from './views/dashboard/dashboard.component'
 // Import Containers
 import {
   FullLayoutComponent,
@@ -24,7 +25,7 @@ export const routes: Routes = [
     children: [
       {
         path: 'dashboard',
-        loadChildren: './views/dashboard/dashboard.module#DashboardModule'
+        component: DashboardComponent
       },
       {
         path: 'tweets',

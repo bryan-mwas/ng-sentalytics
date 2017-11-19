@@ -7,6 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {NgxChartsModule} from '@swimlane/ngx-charts';
 // Import containers
 import {
   FullLayoutComponent,
@@ -71,8 +72,8 @@ import { ClassifiedTweetsComponent } from './views/classified-tweets/classified-
 import { ListTweetsComponent } from './views/list-tweets/list-tweets.component';
 import { DateFilterPipe } from './shared/date-filter.pipe';
 import { TweetService } from './core/tweet.service';
-import { PagerService } from './core/pager.service';
 import { TweetThemesComponent } from './views/tweet-themes/tweet-themes.component';
+import { DashboardComponent } from 'app/views/dashboard/dashboard.component';
 
 @NgModule({
   imports: [
@@ -95,14 +96,14 @@ import { TweetThemesComponent } from './views/tweet-themes/tweet-themes.componen
     ClassifiedTweetsComponent,
     ListTweetsComponent,
     DateFilterPipe,
-    TweetThemesComponent
+    TweetThemesComponent,
+    DashboardComponent
   ],
   providers: [{
     provide: LocationStrategy,
     useClass: HashLocationStrategy
   },
-  TweetService,
-  PagerService
+  TweetService
 ],
   bootstrap: [ AppComponent ]
 })

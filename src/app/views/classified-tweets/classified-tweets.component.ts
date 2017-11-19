@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { TweetService } from '../../core/tweet.service';
-import { PagerService } from '../../core/pager.service';
 // import * as _ from 'underscore';
 import { Observable } from 'rxjs/Observable';
 
@@ -16,7 +15,7 @@ export class ClassifiedTweetsComponent implements OnInit {
   tweet_themes: Observable<[any]>;
   selected_theme: number;
 
-  constructor(private _tweetService: TweetService, private pagerService: PagerService) { }
+  constructor(private _tweetService: TweetService) { }
 
   ngOnInit() {
     this._tweetService.getPolarityTweets().subscribe(

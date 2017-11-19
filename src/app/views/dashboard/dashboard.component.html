@@ -1,3 +1,14 @@
-<div class="animated fadeIn">
-  Hello World!
-</div>
+<div class="row">
+  <div class="col-sm-6 col-lg-4" *ngFor="let polarity of summary">
+    <div class="card">
+      <div class="card-block">
+        <div class="h4 m-0">{{polarity.name}} tweets</div>
+        <div>Total : {{polarity.total_tweets}}</div>
+        <div class="progress progress-xs my-1">
+          <div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+        <small class="text-muted">Sentalytics.</small>
+      </div>
+    </div>
+  </div><!--/.col-->
+</div><!--/.row-->

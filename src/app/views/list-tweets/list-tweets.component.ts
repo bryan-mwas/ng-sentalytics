@@ -25,6 +25,7 @@ export class ListTweetsComponent implements OnInit {
       .subscribe(
       tweets => {
         this.tweets = tweets;
+        this.filtered_tweets = tweets;
         let item_dates: any[] = tweets.map(item => {
           var long_date = new Date(item.created_date);
           var day = long_date.getDate(); //Date of the month: 2 in our example
@@ -65,8 +66,9 @@ export class ListTweetsComponent implements OnInit {
   }
 
   filterPeriod(tweets: Tweet[], filterBy: string): any {
+    console.log("Activated ...");
     if (filterBy == 'all') {
-      return tweets;
+      return this.filtered_tweets = this.tweets;
     }
     let monthsList = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     let a = filterBy.split('-');
