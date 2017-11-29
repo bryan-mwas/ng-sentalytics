@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
+import {PaginationInstance} from '../../../../node_modules/ngx-pagination';
 import { Tweet } from '../../models/tweet';
 import { TweetService } from '../../core/tweet.service';
 import 'rxjs/add/operator/map';
@@ -11,12 +11,19 @@ import 'rxjs/add/operator/map';
   styleUrls: ['./list-tweets.component.scss']
 })
 export class ListTweetsComponent implements OnInit {
+  toggle_view: boolean = false;
   tweets: Tweet[] = [];
   monthsList = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
   all: string = 'all';
   // filtered_period_items = [];
   filtered_period: any[];
   filtered_tweets: Tweet[];
+
+  public config: PaginationInstance = {
+    id: 'custom',
+    itemsPerPage: 10,
+    currentPage: 1
+};
 
   constructor(private _tweetService: TweetService, private _router: Router) { }
 
@@ -78,6 +85,7 @@ export class ListTweetsComponent implements OnInit {
 
   triggerAnalysis() {
     console.log(this.filtered_tweets)
+    this.toggle_view = !this.toggle_view;
     this._tweetService.analyzeTweets(this.filtered_tweets).subscribe(res => {
       console.log(res); // returned in response.body
       this._router.navigate(['/classified']);

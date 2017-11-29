@@ -2,11 +2,11 @@ export const navigation = [
   {
     name: 'Dashboard',
     url: '/dashboard',
-    icon: 'icon-speedometer',
-    badge: {
-      variant: 'info',
-      text: 'NEW'
-    }
+    // icon: 'icon-speedometer',
+    // badge: {
+    //   variant: 'info',
+    //   text: 'NEW'
+    // }
   },
   {
     name: 'List Tweets',
@@ -16,8 +16,8 @@ export const navigation = [
     name: 'Classified Tweets',
     url: '/classified'
   },
-  {
-    name: 'Tweet Themes',
-    url: '/topics'
-  }
+  // {
+  //   name: 'Tweet Themes',
+  //   url: '/topics'
+  // }
 ];
