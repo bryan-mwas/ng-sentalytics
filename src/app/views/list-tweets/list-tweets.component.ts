@@ -28,22 +28,25 @@ export class ListTweetsComponent implements OnInit {
   constructor(private _tweetService: TweetService, private _router: Router) { }
 
   ngOnInit() {
+    this.fetchNewTweets();
+  }
+
+  private fetchNewTweets() {
     this._tweetService.getTweets()
-      .subscribe(
-      tweets => {
+      .subscribe(tweets => {
         this.tweets = tweets;
         this.filtered_tweets = tweets;
         let item_dates: any[] = tweets.map(item => {
           var long_date = new Date(item.created_date);
           var day = long_date.getDate(); //Date of the month: 2 in our example
           var month = long_date.getMonth(); //Month of the Year: 0-based index, so 1 in our example
-          var year = long_date.getFullYear() //Year: 2013
+          var year = long_date.getFullYear(); //Year: 2013
           var dateFormat = year + "-" + month + "-" + day;
           return dateFormat;
         });
         this.filtered_period = this.distinctPeriodDates(item_dates).sort().reverse();
-        console.log(this.filtered_period)
-      })
+        console.log(this.filtered_period);
+      });
   }
 
   distinctPeriodDates(period_begin: any[]) {
